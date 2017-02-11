@@ -64,6 +64,6 @@
     }
     
     
-    return nil;
+    return targetObj;
 }
 @end
