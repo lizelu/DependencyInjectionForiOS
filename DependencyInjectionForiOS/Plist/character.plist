@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Lieutenant</key>
+	<dict>
+		<key>Description</key>
+		<string>中尉</string>
+		<key>ClassName</key>
+		<string>Character</string>
+		<key>RelationProperty</key>
+		<string>weapon</string>
+		<key>RelationClassName</key>
+		<string>HK48Weapon</string>
+	</dict>
+	<key>Captain</key>
+	<dict>
+		<key>Description</key>
+		<string>上尉</string>
+		<key>ClassName</key>
+		<string>Character</string>
+		<key>RelationProperty</key>
+		<string>weapon</string>
+		<key>RelationClassName</key>
+		<string>AWPWeapon</string>
+	</dict>
+	<key>Soldier</key>
+	<dict>
+		<key>Description</key>
+		<string>士兵</string>
+		<key>ClassName</key>
+		<string>Character</string>
+		<key>RelationProperty</key>
+		<string>weapon</string>
+		<key>RelationClassName</key>
+		<string>PistolWeapon</string>
+	</dict>
+</dict>
+</plist>
