@@ -13,8 +13,11 @@
 
 @implementation Character
 - (void)fire {
-    if (self.weapon != nil) {
-        [self.weapon useWeapon];
+    if (_weapon != nil) {
+        [_weapon useWeapon];
     }
+}
+-(void)setWeapon:(WeaponType *)weapon{
+    _weapon = weapon;
 }
 @end

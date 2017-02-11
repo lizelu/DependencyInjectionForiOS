@@ -27,7 +27,6 @@
 - (void)loadInfoPlistData:(NSString *) plistFileName{
     NSString *path = [[NSBundle mainBundle] pathForResource:plistFileName ofType:@".plist"];
     self.infoPlist = [NSDictionary dictionaryWithContentsOfFile:path];
-    NSLog(@"%@", self.infoPlist);
 }
 
 - (NSObject *)getObjWithClassName:(NSString *) className {
@@ -35,11 +34,13 @@
         return nil;
     }
     
+    //获取该类对应的映射信息
     NSDictionary *classInfo = [_infoPlist objectForKey:className];
     if (classInfo == nil) {
         return nil;
     }
     
+    //获取类名、依赖类名、以及依赖属性
     NSString *targetClassName = [classInfo objectForKey:ClassNameKey];
     NSString *relationClassName = [classInfo objectForKey:RelationClassNameKey];
     NSString *relationPropertyName = [classInfo objectForKey:RelationPropertyKey];
@@ -47,20 +48,20 @@
         return nil;
     }
     
+    //生成目标类对象以及依赖对象
     Class TagetClass = NSClassFromString(targetClassName);
     Class RelationClass = NSClassFromString(relationClassName);
-    
     NSObject *targetObj = [[TagetClass alloc] init];
     NSObject *relationObj = [[RelationClass alloc] init];
     if (targetObj == nil || relationObj == nil) {
         return nil;
     }
     
+    //通过setter方法注入依赖对象，（依赖注入）
     NSString *setSelectorString = [NSString stringWithFormat:@"set%@:", relationPropertyName.capitalizedString];
     SEL setSelector = NSSelectorFromString(setSelectorString);
-    
     if ([targetObj respondsToSelector:setSelector]) {
-        [targetObj performSelectorInBackground:setSelector withObject:relationObj];
+        [targetObj performSelectorOnMainThread:setSelector withObject:relationObj waitUntilDone:YES];
     }
     
     

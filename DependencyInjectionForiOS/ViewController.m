@@ -22,9 +22,23 @@
 
 - (IBAction)tapButton:(id)sender {
     Relation *context = [[Relation alloc] initWithPlistFileName:@"character"];
+    
     Character *lieutenant = (Character *)[context getObjWithClassName:@"Lieutenant"];
     if (lieutenant != nil) {
+        NSLog(@"中尉：");
         [lieutenant fire];
+    }
+    
+    Character *captain = (Character *)[context getObjWithClassName:@"Captain"];
+    if (captain != nil) {
+        NSLog(@"上尉：");
+        [captain fire];
+    }
+    
+    Character *soldier = (Character *)[context getObjWithClassName:@"Soldier"];
+    if (soldier != nil) {
+        NSLog(@"士兵：");
+        [soldier fire];
     }
 }
 
