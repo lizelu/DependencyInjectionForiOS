@@ -15,6 +15,7 @@
 @end
 
 @implementation Relation
+
 - (instancetype)initWithPlistFileName: (NSString *) plistFileName
 {
     self = [super init];
@@ -63,8 +64,7 @@
     if ([targetObj respondsToSelector:setSelector]) {
         [targetObj performSelectorOnMainThread:setSelector withObject:relationObj waitUntilDone:YES];
     }
-    
-    
     return targetObj;
 }
+
 @end

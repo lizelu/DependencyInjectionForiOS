@@ -21,6 +21,7 @@
 }
 
 - (IBAction)tapButton:(id)sender {
+    
     Relation *context = [[Relation alloc] initWithPlistFileName:@"character"];
     
     Character *lieutenant = (Character *)[context getObjWithClassName:@"Lieutenant"];
